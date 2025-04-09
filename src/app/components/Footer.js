@@ -9,6 +9,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 
+
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [collapseState, setCollapseState] = useState({
@@ -53,7 +54,7 @@ export default function Footer() {
         </div>
         <hr className="mobile-hr" />
         <div>
-          <h2 className="footer-title">Contact Us</h2>
+          <h2 className="footer-title">Call Us</h2>
           <div className="contact-info">
             <p>+44 20 123 4567</p>
             <p>customercare@mattamuse.com</p>
@@ -109,7 +110,7 @@ export default function Footer() {
               Boutiques
             </a>
             <a href="#" className="quick-link">
-              Contact Us
+              Call Us
             </a>
             <a href="#" className="quick-link">
               EU Compliance Docs
@@ -288,3 +289,6 @@ export default function Footer() {
     </footer>
   );
 }
+
+
+

@@ -1,15 +1,20 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Heart, User, ChevronDown, Menu, LoaderPinwheel } from "lucide-react"
+import { Search, Heart, User, ChevronDown, Menu, LoaderPinwheel, Grid2x2 } from "lucide-react"
+
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <header className="header">
+      <div className="header-base-line">
+        <div><Grid2x2 size={28} color="red"/> Lorem ipsum dolor sit amet</div>
+        <div><Grid2x2 size={28}  color="red"/> Lorem ipsum dolor sit amet</div>
+        <div><Grid2x2 size={28}  color="red"/> Lorem ipsum dolor sit amet</div>
+      </div>
       <div className="container header-container">
-        
       <div style={{display:"flex", alignContent:"center"}}>
         <div className="mobile-view">
           <Menu size={39}/>

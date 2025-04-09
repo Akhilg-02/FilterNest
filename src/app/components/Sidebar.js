@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 
+
 const sections = [
   "idealFor",
   "occasion",

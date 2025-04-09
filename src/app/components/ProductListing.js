@@ -5,6 +5,7 @@ import ProductCard from "./ProductCard";
 import Sidebar from "./Sidebar";
 import { ChevronDown } from "lucide-react";
 
+
 const SORT_OPTIONS = {
   recommended: "Recommended",
   newest: "Newest First",
@@ -148,8 +149,8 @@ export default function ProductListing() {
               </div>
             )}
           </div>
-
-          <div className="products-grid">
+           {/* className="products-grid" */}
+          <div className={`products-grid ${!showFilters ? "grid-4" : "grid-3"}`}>
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

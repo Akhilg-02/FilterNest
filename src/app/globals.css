@@ -33,16 +33,34 @@ ul {
   padding: 0 15px;
 }
 
-/* Header styles */
+/* ------------------------------------------------------------- Header styles */
 .header {
   border-bottom: 1px solid #eee;
-  padding: 15px 0;
+  padding: 0;
 }
+
+.header-base-line {
+  border: 1px solid black;
+  background-color: #000;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 20px;
+  height: 31px;
+}
+
+.header-base-line div{
+  display: flex;
+  justify-items: center;
+}
+
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1em;
 }
 
 .logo {
@@ -54,7 +72,7 @@ ul {
 .nav-menu {
   display: flex;
   margin-top: 2rem;
-  gap: 32px;
+  gap: 140px;
   justify-content: center;
   
 }
@@ -91,9 +109,19 @@ ul {
   .header-container {
     flex-direction: row;
     gap: 15px;
+    padding: 15px;
   }
 
   .nav-menu{
+    display: none;
+  }
+
+  .header-base-line{
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-base-line>div:not(:first-child){
     display: none;
   }
 }
@@ -110,7 +138,7 @@ ul {
 
 
 
-/* Hero section */
+/*------------------------------------------------------------- Hero section */
 .hero {
   text-align: center;
   padding: 50px 0;
@@ -128,14 +156,14 @@ ul {
   color: #666;
 }
 
-/* Product listing */
+/*------------------------------------------------------------ Product listing */
 .product-listing {
   display: flex;
   gap: 30px;
   margin-bottom: 50px;
 }
 
-/* Sidebar */
+/*--------------------------------------------------------------- Sidebar */
 .sidebar {
   width: 250px;
   flex-shrink: 0;
@@ -197,7 +225,7 @@ ul {
 
 
 
-/* Products grid */
+/*----------------------------------------------------------- Products List */
 .products-container {
   flex-grow: 1;
 
@@ -246,12 +274,20 @@ ul {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/*----------------------------------------------------------- Products Card */
 .product-card {
-  position: relative;
+  border: 0px dashed blue;
 }
 
 .product-image {
@@ -261,33 +297,52 @@ ul {
   margin-bottom: 10px;
 }
 
+.product-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
 .product-name {
   font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 5px;
   font-weight: 500;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-price {
   font-size: 12px;
   color: #666;
+  flex: 1;
 }
 
 .favorite-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-/* Footer styles */
+@media (max-width: 1024px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*------------------------------------------------------------- Footer styles */
 .footer {
   background-color: #000;
   color: white;
@@ -309,7 +364,7 @@ ul {
 .footer-title {
   font-size: 14px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
   font-weight: bold;
 }
 
@@ -408,7 +463,7 @@ ul {
   display: none;
   box-sizing: border-box;
   width: 90%;
-  margin: 1em auto;
+  margin: 1em ;
   border: 0.5px solid #333;
   background-color: #fff;
 }
@@ -445,20 +500,9 @@ ul {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  /* .header-container {
-    flex-direction: row;
-    gap: 15px;
-  }
-
-  .nav-menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  } */
 
   .product-listing {
     flex-direction: column;
-    
   }
 
   .sidebar {
@@ -466,7 +510,9 @@ ul {
   }
 
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
   }
 
   .footer-container {
@@ -529,9 +575,16 @@ ul {
   
 }
 
+@media (max-width< 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+   
+  }
+}
+
 @media (max-width: 480px) {
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 
   .hero h1 {
@@ -556,7 +609,6 @@ ul {
   font-size: 14px;
   text-transform: uppercase;
   color: lightgray;
-  /* margin-left:-55%; */
 }
 
 .controls-bar {
@@ -567,7 +619,6 @@ ul {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   flex-wrap: wrap;
-  /* gap: 25%; */
 }
 
 .controls-bar-inner{
@@ -585,6 +636,9 @@ ul {
   margin-top: 2%;
 }
 
+.sidebar {
+  display: block;
+}
 
 @media (max-width: 768px) {
   .controls-bar {
@@ -628,11 +682,6 @@ ul {
   }
 
 }
-
-.sidebar {
-  display: block;
-}
-
 
 
 /* Hide sidebar by default on mobile */
