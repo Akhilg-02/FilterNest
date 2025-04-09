@@ -7,8 +7,6 @@ import Image from "next/image";
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const imageSrc = product?.image || "/placeholder.svg";
-
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
   };
@@ -16,17 +14,13 @@ export default function ProductCard({ product }) {
   return (
     <>
       <div className="product-card">
-        <img
-          src={product.image || "/placeholder.svg"}
-          alt={`${product.title} - product image`}
+        <Image
+          src={product.image}
+          alt={product.title}
+          width={300}
+          height={300}
           className="product-image"
         />
-        {/* <Image 
-      className="product-image"
-      //width={180} height={37}
-      src={imageSrc}
-      alt={`${product?.title || "Product"} - product image`}
-      /> */}
 
         <h3 className="product-name" title={product.title}>
           {product.title.length > 30

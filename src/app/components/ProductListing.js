@@ -46,7 +46,7 @@ export default function ProductListing() {
   }, []);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -94,24 +94,28 @@ export default function ProductListing() {
     setFilters((prev) => ({ ...prev, [type]: value }));
   };
 
-  if (loading) return <div className="container">Loading products...</div>;
+  if (loading) return <div className="loading-message">Loading products...</div>;
   if (error) return <div className="container">Error: {error}</div>;
 
   return (
     <div className="container">
       <div className="hero">
         <h1>Discover Our Products</h1>
-        <p>Lorem ipsum dolor sit amet consectetur...</p>
+        <p> Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus 
+        scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor</p>
       </div>
 
       <div className="controls-bar">
       <div className="controls-bar-inner">
-      <span className="item-length">{filteredProducts.length} ITEMS</span>
+      <span className="item-length">{filteredProducts?.length} ITEMS</span>
         <span
           className="filter-toggle"
           onClick={() => setShowFilters(!showFilters)}
         >
+          <span className="desktop-toggle">
          {showFilters ? "< Hide Filters" : "> Show Filters"}
+         </span>
+         <span className="mobile-toggle">Filter</span>
         </span>
       </div>
         <div className="mid-line"></div>
@@ -128,7 +132,6 @@ export default function ProductListing() {
           activeFilters={filters}
           onFilterChange={updateFilter}
           showFilters={showFilters}
-          //toggleFilters={() => setShowFilters(!showFilters)}
         />
         <div className="products-container">
           <div className="sort-container">
@@ -149,7 +152,6 @@ export default function ProductListing() {
               </div>
             )}
           </div>
-           {/* className="products-grid" */}
           <div className={`products-grid ${!showFilters ? "grid-4" : "grid-3"}`}>
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -160,3 +162,4 @@ export default function ProductListing() {
     </div>
   );
 }
+
