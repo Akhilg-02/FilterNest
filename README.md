@@ -28,9 +28,9 @@ It fetches product data from an external API using **Server-Side Rendering (SSR)
 
 ## 📸 Screenshots
 
-> Add screenshots here once UI is ready  
-`/public/home-desktop.png`  
-`/public/home-mobile.png`
+### 🖥️ Desktop View
+![Desktop UI](https://raw.githubusercontent.com/Akhilg-02/FilterNest/refs/heads/main/public/home-desktop.png)
+
 
 ---
 
