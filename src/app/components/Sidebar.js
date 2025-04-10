@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Menu } from "lucide-react";
-
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const sections = [
   "idealFor",
@@ -52,35 +51,72 @@ export default function Sidebar({
             checked={activeFilters.customizable}
             onChange={(e) => onFilterChange("customizable", e.target.checked)}
           />
-          CUSTOMIZABLE
+          <span style={{ fontWeight: "bold" }}>&nbsp;&nbsp;CUSTOMIZABLE</span>
         </label>
       </div>
 
       {sections.map((key) => (
         <div key={key} className="filter-section">
-          <div className="filter-title" onClick={() => toggleSection(key)}>
-            <span>{key.replace(/([A-Z])/g, " $1").toUpperCase()}</span>
-            {expanded[key] ? (
-              <ChevronUp size={16} />
-            ) : (
-              <ChevronDown size={16} />
-            )}
-          </div>
+          {key === "idealFor" ? (
+            <>
+              <div
+                className="filter-title"
+                onClick={() => toggleSection(key)}
+                style={{ cursor: "pointer" }}
+              >
+                <span>{key.replace(/([A-Z])/g, " $1").toUpperCase()}</span>
+                {expanded[key] ? (
+                  <ChevronUp size={16} />
+                ) : (
+                  <ChevronDown size={16} />
+                )}
+              </div>
 
-        {expanded[key] && (
-            <div className="filter-options">
-              {options[key].map((opt) => (
-                <label key={opt}>
-                  <input
-                    type="radio"
-                    name={key}
-                    checked={activeFilters[key] === opt}
-                    onChange={() => onFilterChange(key, opt)}
-                  />
-                  {opt === "Kids" ? "Baby & Kids" : opt}
-                </label>
-              ))}
-            </div>
+              {expanded[key] ? (
+                <div className="filter-options">
+                  <label className="filter-option">
+                    <span onClick={() => onFilterChange("idealFor", "All")}>
+                      All
+                    </span>
+                  </label>
+                  <button
+                    className="unselect-btn"
+                    onClick={() => onFilterChange("idealFor", "All")}
+                  >
+                    Unselect all
+                  </button>
+
+                  {options[key]
+                    .filter((opt) => opt !== "All")
+                    .map((opt) => (
+                      <label key={opt} className="filter-option">
+                        <input
+                          type="checkbox"
+                          checked={activeFilters[key]?.includes(opt)}
+                          onChange={() => onFilterChange(key, opt)}
+                        />
+                        <span>{opt === "Kids" ? "Baby & Kids" : opt}</span>
+                      </label>
+                    ))}
+                </div>
+              ) : (
+                <div>
+                  <span>All</span>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="filter-title">
+                <span>{key.replace(/([A-Z])/g, " $1").toUpperCase()}</span>
+                <span>
+                  <ChevronDown size={16} />
+                </span>
+              </div>
+              <div>
+                <span>All</span>
+              </div>
+            </>
           )}
         </div>
       ))}
