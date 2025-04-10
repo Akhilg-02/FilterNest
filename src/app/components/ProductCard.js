@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
               isFavorite ? "Remove from favorites" : "Add to favorites"
             }
           >
-            <Heart size={16} fill={isFavorite ? "#000" : "none"} />
+            <Heart size={16} fill={isFavorite ? "#ff4d4d" : "none"} />
           </button>
         </div>
       </div>
