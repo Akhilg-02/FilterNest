@@ -4,11 +4,10 @@ import Footer from "./components/Footer"
 
 export const metadata = {
   title: "E-commerce Store | Discover Our Products",
-  description: "Browse our collection of high-quality products including bags, toys, and accessories.",
+  description: "Browse our collection of high-quality products including bags, clothes, and accessories.",
   openGraph: {
     title: "E-commerce Store | Discover Our Products",
-    description: "Browse our collection of high-quality products including bags, toys, and accessories.",
-    //images: ["/og-image.jpg"],
+    description: "Browse our collection of high-quality products including bags, clothes, and accessories.",
   },
   schema: {
     "@context": "https://schema.org",
